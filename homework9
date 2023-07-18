@@ -1,0 +1,146 @@
+# implement recursive factorial function with caching using a technique called memoization. Memoization is a way to store previously computed results to avoid redundant calculations and improve the performance of recursive functions.
+
+memory = {}
+
+def factorial(n):
+    if n in memory:
+        return memory[n]
+    
+    if n == 0 or n == 1:
+        result = 1
+    else:
+        result = n * factorial(n-1)
+    
+    memory[n] = result
+    
+    return result
+print(factorial(4))  
+
+
+# Implement a recursive function to compute the nth Fibonacci number.
+
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)  
+        
+print(fibonacci(5)) 
+
+
+# Create a recursive function to find the sum of digits of a given positive integer.
+
+def sum_of_digits(n):
+    if n < 10:
+        return n
+    else:
+        return n % 10 + sum_of_digits(n // 10)  
+        
+print(sum_of_digits(12345))  
+
+  
+
+# Implement binary search algorithm iterative
+
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1  
+
+
+ # Write a recursive binary search algorithm that searches for a target element within a sorted array. The algorithm follows these steps:
+# Define a recursive function binary_search_recursive(array, target, low, high)
+# If low is greater than high, return -1 to indicate that the target was not found.
+# Calculate the middle index of the current range as mid = (low + high) // 2.
+# If array[mid] is equal to the target, return mid to indicate that the target was found at the current index.
+# If array[mid] is greater than the target, recursively call binary_search_recursive(array, target, low, mid - 1) to search in the left half of the array.
+# If array[mid] is less than the target, recursively call binary_search_recursive(array, target, mid + 1, high) to search in the right half of the array
+
+
+def binary_search_recursive(array, target, low, high):
+    if low > high:
+        return -1
+    
+    mid = (low + high) // 2
+    
+    if array[mid] == target:
+        return mid
+    
+    elif array[mid] > target:
+        return binary_search_recursive(array, target, low, mid - 1)
+    
+    else:
+        return binary_search_recursive(array, target, mid + 1, high)  
+
+  
+
+# Implement the bubble sort algorithm to sort a given list of elements in ascending order . 
+
+def bubble_sort(array):
+    n = len(array)
+    
+    for i in range(n):
+        
+        for j in range(0, n-i-1):
+            
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+    
+    return array
+
+
+#Implement the insertion sort algorithm to sort a given list of elements in ascending order. insertion_sort(array: list) -> list
+
+def insertion_sort(array):
+    
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i-1
+
+        while j >= 0 and array[j] > key:
+            array[j+1] = array[j]
+            j -= 1
+
+        array[j+1] = key
+
+    return array
+    
+
+
+# Implement the selection sort algorithm to sort a given list of elements in ascending order. selection_sort(array: list) -> list 
+
+
+def selection_sort(array):
+    for i in range(len(array)):
+        min_index = i
+        for j in range(i+1, len(array)):
+            if array[j] < array[min_index]:
+                min_index = j
+
+        array[i], array[min_index] = array[min_index], array[i]
+    
+    return array
+
+
+
+
+
+
+    
+  
+  
+
+
